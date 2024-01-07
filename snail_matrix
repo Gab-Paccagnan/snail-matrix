@@ -1,0 +1,23 @@
+def snail(snail_map):
+    if not snail_map:
+        return []
+
+    x = []
+    while snail_map:
+        x.extend(snail_map.pop(0))
+
+        if not snail_map:
+            break
+
+        for row in snail_map:
+            x.append(row.pop(-1))
+
+        if not snail_map:
+            break
+
+        x.extend(snail_map.pop()[::-1])
+
+        for row in reversed(snail_map):
+            x.append(row.pop(0))
+
+    return x
